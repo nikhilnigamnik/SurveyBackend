@@ -4,7 +4,12 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://surveyform-tau.vercel.app/",
+    optionsSuccessStatus: 200, 
+  })
+);
 
 const PORT = 4000; 
 const SURVEY_DB_URL = "mongodb+srv://nikhilnigamnik:cSpTMaMo8PkkWQ8Q@cluster2.qavuup7.mongodb.net/?retryWrites=true&w=majority";
