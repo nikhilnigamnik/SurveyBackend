@@ -4,12 +4,9 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
-app.use(
-  cors({
-    origin: "https://surveyform-tau.vercel.app/",
-    optionsSuccessStatus: 200, 
-  })
-);
+
+
+app.use(cors());
 
 const PORT = 4000; 
 const SURVEY_DB_URL = "mongodb+srv://nikhilnigamnik:cSpTMaMo8PkkWQ8Q@cluster2.qavuup7.mongodb.net/?retryWrites=true&w=majority";
@@ -35,6 +32,10 @@ const surveyAnswerSchema = new mongoose.Schema({
 const SurveyAnswer = mongoose.model("SurveyAnswer", surveyAnswerSchema);
 
 app.use(bodyParser.json());
+
+app.get("/",(req,res) => {
+  res.send('Hello World!');
+} )
 
 app.post("/api/survey/answers", async (req, res) => {
   const { sessionId, answers } = req.body;
